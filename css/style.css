@@ -45,14 +45,18 @@ body {
 }
 
 #title {
-    font-size: 3vw;
+    font-size: 2.8vw;
     text-transform: uppercase;
 }
 
 #fact {
     margin: 0 2rem;
-    font-size: 1.5vw;
+    font-size: 1.2vw;
     text-align: justify;
+}
+
+#fact-source {
+    font-size: 1vw;
 }
 
 footer {
@@ -68,26 +72,69 @@ footer {
 
 #app-version {
     cursor: default;
+    font-size: 0.8vw;
 }
 
 #credits {
     text-decoration: none;
     cursor: default;
+    font-size: 0.8vw;
 }
 
 #credits a:hover {
     text-decoration: underline;
 }
 
-#tumblr-icon {
-    height: 0.9rem;
+#socials {
+    display: flex;
+    gap: 1rem;
+}
+
+.social {
+    height: 1vw;
     width: auto;
 }
 
-#tumblr-icon path {
+.social path {
     transition: all 0.5s;
 }
 
-#tumblr-icon:hover path {
+.social:hover path {
     transform: scale(0.8);
+}
+
+/* RESPONSIVE DESIGN */
+
+@media screen and (orientation:portrait) {
+    #content-section {
+        padding: 3rem 0.2rem 1rem;
+    }
+
+    #title {
+        font-size: 6vw;
+    }
+    
+    #fact {
+        font-size: 3vw;
+    }
+    
+    #fact-source {
+        font-size: 2.5vw;
+    }
+    
+    footer {
+        padding: 1.2rem 1.5rem;
+    }
+    
+    #app-version {
+        font-size: 2vw;
+    }
+    
+    #credits {
+        font-size: 2vw;
+    }
+
+    .social {
+        height: 2vw;
+    }
 }
