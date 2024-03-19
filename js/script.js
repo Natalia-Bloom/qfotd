@@ -19,8 +19,8 @@ function loadFact() {
     // CHECKING TO SEE IF THE DATA ALREADY EXISTS IN THE LOCAL STORAGE
     if(!localStorage.getItem("fact-content") || !localStorage.getItem("fact-source") || !localStorage.getItem("expiry-date")) {
         // IF IT DOESN'T WE CREATE IT BY CHOOSING A "RANDOM" ID FROM THE JSON ARRAY:
-        const randomFact = facts[Math.floor(Math.random() * facts.length)];
-        // const randomFact = facts[6];
+        // const randomFact = facts[Math.floor(Math.random() * facts.length)];
+        const randomFact = facts[88];
         // AND WE GET THE EXPIRATION DAY FOR THE FACT BY ADDING TIME TO THE CURRENT TIMESTAMP FROM EARLIER:
         const expiryDate = new Date(Date.now() + (1000)).getTime()
 
@@ -34,7 +34,7 @@ function loadFact() {
     const factContent = localStorage.getItem("fact-content");
     const factSource = localStorage.getItem("fact-source");
     // WE TRIM THE SOURCE LINK TO DISPLAY IT ON THE HTML PAGE MORE CLEANLY:
-    let factSourceTrimmed = factSource.split("//").pop().split('/')[0]
+    let factSourceTrimmed = factSource.split("//").pop().split('/')[0].concat("/...")
     const expiryDate = localStorage.getItem("expiry-date")
 
     // WE FILL THE HTML PAGE WITH THE DATA
@@ -47,9 +47,12 @@ function loadFact() {
         htmlFactSource.href = `${factSource}`;
         htmlFactSource.title = `${factSource}`;
         htmlFactSource.innerHTML = `Source: ${factSourceTrimmed}`;
+    } else if(factSource === "") {
+        htmlFactSource.display = "none";
     } else {
         // IF IT ISN'T AN ACTUAL SOURCE WE DON'T SEND PEOPLE ANYWHERE
         htmlFactSource.href = "#";
+        htmlFactSource.target = "_self";
         htmlFactSource.title = `${factSource}`;
         htmlFactSource.innerHTML = `Source: ${factSource}`;
     }
